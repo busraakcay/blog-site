@@ -36,8 +36,6 @@
             </div>
         </div>
     </nav>
-
-
     <div class="col-md-2 h-100 fix bg-dark">
         <div class="table-responsive">
             <table class="table table-dark table-hover" style="margin-top: 60px;">
@@ -48,25 +46,25 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{__('Site Information')}}</td>
+                        <td><a href="" class="text-decoration-none text-white">{{__('Site Information')}}</a></td>
                     </tr>
                     <tr>
-                        <td>{{__('Categories')}}</td>
+                        <td><a href="" class="text-decoration-none text-white">{{__('Categories')}}</a></td>
                     </tr>
                     <tr>
-                        <td>{{__('Articles')}}</td>
+                        <td><a href="" class="text-decoration-none text-white">{{__('Articles')}}</a></td>
                     </tr>
                     <tr>
-                        <td>{{__('About Us')}}</td>
+                        <td><a href="" class="text-decoration-none text-white">{{__('About Us')}}</a></td>
                     </tr>
                     <tr>
-                        <td>{{__('Contact Us')}}</td>
+                        <td><a href="" class="text-decoration-none text-white">{{__('Contact Us')}}</a></td>
                     </tr>
                     <tr>
-                        <td>{{__('Messages')}}</td>
+                        <td><a href="" class="text-decoration-none text-white">{{__('Messages')}}</a></td>
                     </tr>
                     <tr>
-                        <td>{{__('Admins')}}</td>
+                        <td><a href="" class="text-decoration-none text-white">{{__('Admins')}}</a></a></td>
                     </tr>
                 </tbody>
             </table>
