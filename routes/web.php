@@ -1,12 +1,22 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserControllers\HomeController;
+use App\Http\Controllers\UserControllers\CategoryController;
+use App\Http\Controllers\UserControllers\AboutController;
+use App\Http\Controllers\UserControllers\ContactController;
+
+use App\Http\Controllers\AdminControllers\AdminController;
+use App\Http\Controllers\AdminControllers\DashboardController;
+use App\Http\Controllers\AdminControllers\SiteInformationController;
+use App\Http\Controllers\AdminControllers\AdminCategoryController;
+use App\Http\Controllers\AdminControllers\ArticleController;
+use App\Http\Controllers\AdminControllers\AdminAboutController;
+use App\Http\Controllers\AdminControllers\MessageController;
+use App\Http\Controllers\AdminControllers\ManageController;
+
+
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\DashboardController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +58,12 @@ Route::group([
     Route::get('/', [AdminController::class, 'index'])->name('admin');
     Route::get('/login', [LoginController::class, 'index'])->name('admin.login');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/site-information', [SiteInformationController::class, 'index'])->name('admin.site_information');
+    Route::get('/admin-category', [AdminCategoryController::class, 'index'])->name('admin.category');
+    Route::get('/article', [ArticleController::class, 'index'])->name('admin.article');
+    Route::get('/admin-about', [AdminAboutController::class, 'index'])->name('admin.about');
+    Route::get('/messages', [MessageController::class, 'index'])->name('admin.messages');
+    Route::get('/manage', [ManageController::class, 'index'])->name('admin.manage');
 });
 
 Route::get('/admin', function () {

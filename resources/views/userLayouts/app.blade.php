@@ -14,14 +14,14 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <title>My Blog</title>
+    <title>{{ $site_information->name }}</title>
 </head>
 
 <body>
     <div>
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">{{__('My Blog')}}</a>
+                <a class="navbar-brand" href="{{ route('home') }}">{{ $site_information->name }}</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -66,9 +66,7 @@
             <!-- Section: Text -->
             <section class="mb-4">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-                    repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-                    eum harum corrupti dicta, aliquam sequi voluptate quas.
+                    {{ $site_information->footer }}
                 </p>
             </section>
             <!-- Section: Text -->
@@ -78,7 +76,7 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © {{date('Y')}} Copyright:
-            <a class="text-white" href="{{ route('home') }}">My Blog</a>
+            <a class="text-white" href="{{ route('home') }}">{{ $site_information->name }}</a>
         </div>
         <!-- Copyright -->
     </footer>

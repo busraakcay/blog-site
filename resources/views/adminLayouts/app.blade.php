@@ -14,7 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-    <title>My Blog</title>
+    <title>{{ $site_information->name }}</title>
 </head>
 
 <body>
@@ -41,30 +41,27 @@
             <table class="table table-dark table-hover" style="margin-top: 60px;">
                 <thead>
                     <tr>
-                        <th class="text-center">My Blog</th>
+                        <th class="text-center"><a href="{{ route('admin.dashboard') }}" class="text-decoration-none text-white">{{ $site_information->name }}</a></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="" class="text-decoration-none text-white">{{__('Site Information')}}</a></td>
+                        <td><a href="{{ route('admin.site_information') }}" class="text-decoration-none text-white">{{__('Site Information')}}</a></td>
                     </tr>
                     <tr>
-                        <td><a href="" class="text-decoration-none text-white">{{__('Categories')}}</a></td>
+                        <td><a href="{{ route('admin.category') }}" class="text-decoration-none text-white">{{__('Categories')}}</a></td>
                     </tr>
                     <tr>
-                        <td><a href="" class="text-decoration-none text-white">{{__('Articles')}}</a></td>
+                        <td><a href="{{ route('admin.article') }}" class="text-decoration-none text-white">{{__('Articles')}}</a></td>
                     </tr>
                     <tr>
-                        <td><a href="" class="text-decoration-none text-white">{{__('About Us')}}</a></td>
+                        <td><a href="{{ route('admin.about') }}" class="text-decoration-none text-white">{{__('About Us')}}</a></td>
                     </tr>
                     <tr>
-                        <td><a href="" class="text-decoration-none text-white">{{__('Contact Us')}}</a></td>
+                        <td><a href="{{ route('admin.messages') }}" class="text-decoration-none text-white">{{__('Messages')}}</a></td>
                     </tr>
                     <tr>
-                        <td><a href="" class="text-decoration-none text-white">{{__('Messages')}}</a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="" class="text-decoration-none text-white">{{__('Admins')}}</a></a></td>
+                        <td><a href="{{ route('admin.manage') }}" class="text-decoration-none text-white">{{__('Admins')}}</a></a></td>
                     </tr>
                 </tbody>
             </table>
@@ -83,7 +80,7 @@
     <footer class="bg-dark text-center text-white footer">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © {{date('Y')}} Copyright:
-            <a class="text-white" href="{{ route('home') }}">My Blog</a>
+            <a class="text-white" href="{{ route('home') }}">{{ $site_information->name }}</a>
         </div>
         <!-- Copyright -->
     </footer>
