@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\InfoController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,8 +29,8 @@ Route::group([
 ], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
-    Route::get('/about', [InfoController::class, 'about'])->name('about');
-    Route::get('/contact', [InfoController::class, 'contact'])->name('contact');
+    Route::get('/about', [AboutController::class, 'index'])->name('about');
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 });
 
 Route::get('/', function () {
@@ -42,9 +45,9 @@ Route::group([
     'where' => ['locale' => '[a-zA-Z]{2}'],
     'middleware' => 'setlocale'
 ], function () {
-    Route::get('/', [AdminController::class, 'admin'])->name('admin');
-    Route::get('/login', [AdminController::class, 'login'])->name('admin.login');
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/login', [LoginController::class, 'index'])->name('admin.login');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 });
 
 Route::get('/admin', function () {
