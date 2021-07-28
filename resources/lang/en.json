@@ -27,5 +27,10 @@
     "Number of Categories" : "Number of Categories",
     "Number of Articles" : "Number of Articles",
     "Number of Admins" : "Number of Admins",
-    "Total Messages" : "Total Messages"
+    "Total Messages" : "Total Messages",
+    "There is no message": "There is no message",
+    "Delete" : "Delete",
+    "Edit" : "Edit",
+    "Site Name" : "Site Name",
+    "Footer" : "Footer"
 }

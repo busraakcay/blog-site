@@ -27,5 +27,10 @@
     "Number of Categories" : "Kategorilerin Sayısı",
     "Number of Articles" : "Makalelerin Sayısı",
     "Number of Admins" : "Adminlerin Sayısı",
-    "Total Messages" : "Toplam Mesajlar"
+    "Total Messages" : "Toplam Mesajlar",
+    "There is no message": "Mesaj yok",
+    "Delete" : "Sil",
+    "Edit" : "Düzenle",
+    "Site Name" : "Site Adı",
+    "Footer" : "Alt Bilgi"
 }

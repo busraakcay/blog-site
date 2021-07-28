@@ -41,6 +41,7 @@ Route::group([
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+    Route::post('/contact', [ContactController::class, 'store']);
 });
 
 Route::get('/', function () {
@@ -68,4 +69,12 @@ Route::group([
 
 Route::get('/admin', function () {
     return redirect(app()->getLocale() . '/admin');
+});
+
+Route::group([
+    'prefix' => '/admin'
+], function () {
+    Route::delete('/messages/{id}', [MessageController::class, 'destroy'])->name('messages.destroy');
+    Route::put('/admin-about/{id}', [AdminAboutController::class, 'update'])->name('about.update');
+    Route::put('/site-information/{id}', [SiteInformationController::class, 'update'])->name('siteInfo.update');
 });

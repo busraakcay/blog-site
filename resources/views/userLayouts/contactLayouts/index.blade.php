@@ -6,7 +6,7 @@
         <div class="container card">
             <div class=" text-wrap">
                 <h3 class="text-center mt-5">{{__('Contact Us')}}</h3>
-                <form action="#" method="post">
+                <form action="{{ route('contact') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="name">{{ __('Name Surname') }}</label>
