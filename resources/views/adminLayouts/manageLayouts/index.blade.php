@@ -20,7 +20,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="row">
-                                <form action="{{ route('manage.edit', $admin->id) }}" method="post">
+                                <form action="{{ route('manage.edit', $admin->id) }}" method="get">
                                     @csrf
                                     <button type='submit' class="btn btn-dark pull-right my-3">
                                         {{ __('Edit') }}

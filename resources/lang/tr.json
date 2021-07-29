@@ -17,8 +17,9 @@
     "Login" : "Giriş Yap",
     "Username" : "Kullanıcı Adı",
     "Password" : "Şifre",
+    "Confirm Password" : "Şifre Doğrula",
     "Remember Me" : "Beni Hatırla",
-    "Forgot your password?" : "Şifreni mi unuttun?",
+    "Forgot Your Password?" : "Şifremi Unuttum?",
     "Site Information" : "Site Bilgileri",
     "Articles" : "Makaleler",
     "Messages" : "Mesajlar",
@@ -38,6 +39,8 @@
     "Admin Role" : "Admin Rolü",
     "Edit Admin" : "Admin Düzenle",
     "Add" : "Ekle",
-    "Add New Admin" : "Yeni Admin Ekle"
+    "Add New Admin" : "Yeni Admin Ekle",
+    "Profile" : "Profil",
+    "Your Role :  " : "Rolün : "
 
 }

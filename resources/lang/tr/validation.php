@@ -160,6 +160,12 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => 'Ad Soyad',
+        'username' => 'Kullanıcı Adı',
+        'email' => 'E-Mail Adresi',
+        'role' => 'Rol',
+        'password' => 'Şifre'
+    ],
 
 ];

@@ -3,11 +3,19 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Http\Request;
-use App\Models\Admin;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ManageController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->middleware("auth");
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,7 @@ class ManageController extends Controller
      */
     public function index()
     {
-        $admins = Admin::orderBy('id', 'asc')->get();
+        $admins = User::orderBy('id', 'asc')->get();
         return view('adminLayouts.manageLayouts.index', compact('admins'));
     }
 
@@ -35,17 +43,27 @@ class ManageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        Admin::create([
+        $request->validate([
+            'name' => 'required|string|max:255|min:3',
+            'username' => 'required|string|max:50|min:3|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'role' => 'required|string|max:25',
+            'password' => 'required|string|min:8|confirmed'
+        ]);
+
+        User::create([
             'name' => $request->input('name'),
             'username' => $request->input('username'),
             'email' => $request->input('email'),
             'role' => $request->input('role'),
-            'password' => $request->input('password')
+            'password' => Hash::make($request->input('password')),
+
         ]);
 
-        $admins = Admin::orderBy('id', 'asc')->get();
+        $admins = User::orderBy('id', 'asc')->get();
         return view('adminLayouts.manageLayouts.index', compact('admins'));
     }
 
@@ -58,7 +76,7 @@ class ManageController extends Controller
     public function edit($id)
     {
         $id = request()->segment(5);
-        $admin = Admin::find($id);
+        $admin = User::find($id);
         return view('adminLayouts.manageLayouts.edit', compact('admin'));
     }
 
@@ -72,14 +90,18 @@ class ManageController extends Controller
 
     public function update(Request $request, $id)
     {
-        Admin::where('id', $id)->update([
+        User::where('id', $id)->update([
             'name' => $request->input('name'),
             'username' => $request->input('username'),
             'email' => $request->input('email'),
             'role' => $request->input('role')
         ]);
 
-        return redirect()->back();
+        $admins = User::orderBy('id', 'asc')->get();
+        return redirect()->route('admin.manage', [
+            'locale' => app()->getLocale(),
+            'admins' => $admins,
+        ]);
     }
 
     /**
@@ -90,13 +112,13 @@ class ManageController extends Controller
      */
     public function destroy($id)
     {
-        $admin = Admin::find($id);
-        $adminCountBeforeDelete = Admin::count();
+        $admin = User::find($id);
+        $adminCountBeforeDelete = User::count();
         $admin->delete();
-        $adminCountAfterDelete = Admin::count();
+        $adminCountAfterDelete = User::count();
         if ($adminCountAfterDelete < $adminCountBeforeDelete) {
             return redirect()->back();
-        }else {
+        } else {
             abort(404);
         }
     }

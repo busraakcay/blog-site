@@ -17,8 +17,9 @@
     "Login" : "Login",
     "Username" : "Username",
     "Password" : "Password",
+    "Confirm Password" : "Confirm Password",
     "Remember Me" : "Remember Me",
-    "Forgot your password?" : "Forgot your password?",
+    "Forgot Your Password?" : "Forgot Your Password?",
     "Site Information" : "Site Information",
     "Articles" : "Articles",
     "Messages" : "Messages",
@@ -38,5 +39,7 @@
     "Admin Role" : "Admin Role",
     "Edit Admin" : "Edit Admin",
     "Add" : "Add",
-    "Add New Admin" : "Add New Admin"
+    "Add New Admin" : "Add New Admin",
+    "Profile" : "Profile",
+    "Your Role :  " : "Your Role : "
 }

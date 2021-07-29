@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserControllers\HomeController;
+use App\Http\Controllers\UserControllers\UserHomeController;
 use App\Http\Controllers\UserControllers\CategoryController;
 use App\Http\Controllers\UserControllers\AboutController;
 use App\Http\Controllers\UserControllers\ContactController;
@@ -13,11 +13,10 @@ use App\Http\Controllers\AdminControllers\ArticleController;
 use App\Http\Controllers\AdminControllers\AdminAboutController;
 use App\Http\Controllers\AdminControllers\MessageController;
 use App\Http\Controllers\AdminControllers\ManageController;
-
-
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +36,7 @@ Route::group([
     'where' => ['locale' => '[a-zA-Z]{2}'],
     'middleware' => 'setlocale'
 ], function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/', [UserHomeController::class, 'index'])->name('articles');
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
@@ -57,8 +56,12 @@ Route::group([
     'middleware' => 'setlocale'
 ], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
-    Route::get('/login', [LoginController::class, 'index'])->name('admin.login');
+    Auth::routes([
+        'register' => false
+    ]);
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/profile', [HomeController::class, 'index'])->name('home');
     Route::get('/site-information', [SiteInformationController::class, 'index'])->name('admin.site_information');
     Route::get('/admin-category', [AdminCategoryController::class, 'index'])->name('admin.category');
     Route::get('/article', [ArticleController::class, 'index'])->name('admin.article');

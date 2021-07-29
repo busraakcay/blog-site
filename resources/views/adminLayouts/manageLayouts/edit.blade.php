@@ -9,6 +9,8 @@
                 <div class="card-header mt-0 bg-dark text-white"><b>{{ __('Edit Admin') }}</b></div>
                 <div class="card-body border-bottom">
                     <form action="{{ route('manage.update', $admin->id) }}" method="post">
+                        @csrf
+                        @method('put')
                         <div class="form-group">
                             <label for="name">{{ __('Name Surname') }}</label>
                             <input type="text" class="form-control" name="name" id="name" value="{{ $admin->name }}"></input>
@@ -25,8 +27,6 @@
                             <label for="role">{{ __('Admin Role') }}</label>
                             <input type="text" class="form-control" name="role" id="role" value="{{ $admin->role }}"></input>
                         </div>
-                        @csrf
-                        @method('put')
                         <button type='submit' class="btn btn-dark pull-right my-3 ml-auto mr-3">
                             {{ __('Edit') }}
                         </button>
