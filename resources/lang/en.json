@@ -32,5 +32,11 @@
     "Delete" : "Delete",
     "Edit" : "Edit",
     "Site Name" : "Site Name",
-    "Footer" : "Footer"
+    "Footer" : "Footer",
+    "Admin Name" : "Admin Name",
+    "Admin E-Mail" : "Admin E-Mail",
+    "Admin Role" : "Admin Role",
+    "Edit Admin" : "Edit Admin",
+    "Add" : "Add",
+    "Add New Admin" : "Add New Admin"
 }

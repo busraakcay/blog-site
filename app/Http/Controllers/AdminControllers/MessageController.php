@@ -8,7 +8,7 @@ use App\Models\Message;
 
 class MessageController extends Controller
 {
-    public function index($id)
+    public function index()
     {
         $messages = Message::orderBy('id', 'desc')->get();
         return view('adminLayouts.messages', compact('messages'));

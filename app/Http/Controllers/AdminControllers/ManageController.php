@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin;
 
 class ManageController extends Controller
 {
@@ -14,7 +15,8 @@ class ManageController extends Controller
      */
     public function index()
     {
-        return view('adminLayouts.manageLayouts.index');
+        $admins = Admin::orderBy('id', 'asc')->get();
+        return view('adminLayouts.manageLayouts.index', compact('admins'));
     }
 
     /**
@@ -24,7 +26,7 @@ class ManageController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminLayouts.manageLayouts.create');
     }
 
     /**
@@ -35,18 +37,16 @@ class ManageController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        Admin::create([
+            'name' => $request->input('name'),
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'role' => $request->input('role'),
+            'password' => $request->input('password')
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $admins = Admin::orderBy('id', 'asc')->get();
+        return view('adminLayouts.manageLayouts.index', compact('admins'));
     }
 
     /**
@@ -57,7 +57,9 @@ class ManageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $id = request()->segment(5);
+        $admin = Admin::find($id);
+        return view('adminLayouts.manageLayouts.edit', compact('admin'));
     }
 
     /**
@@ -67,9 +69,17 @@ class ManageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
-        //
+        Admin::where('id', $id)->update([
+            'name' => $request->input('name'),
+            'username' => $request->input('username'),
+            'email' => $request->input('email'),
+            'role' => $request->input('role')
+        ]);
+
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +90,14 @@ class ManageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $admin = Admin::find($id);
+        $adminCountBeforeDelete = Admin::count();
+        $admin->delete();
+        $adminCountAfterDelete = Admin::count();
+        if ($adminCountAfterDelete < $adminCountBeforeDelete) {
+            return redirect()->back();
+        }else {
+            abort(404);
+        }
     }
 }

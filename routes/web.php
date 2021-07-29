@@ -65,6 +65,9 @@ Route::group([
     Route::get('/admin-about', [AdminAboutController::class, 'index'])->name('admin.about');
     Route::get('/messages', [MessageController::class, 'index'])->name('admin.messages');
     Route::get('/manage', [ManageController::class, 'index'])->name('admin.manage');
+    Route::get('/manage/edit/{id}', [ManageController::class, 'edit'])->name('manage.edit');
+    Route::get('/manage/create', [ManageController::class, 'create'])->name('manage.create');
+    Route::post('/manage', [ManageController::class, 'store'])->name('manage.store');
 });
 
 Route::get('/admin', function () {
@@ -77,4 +80,6 @@ Route::group([
     Route::delete('/messages/{id}', [MessageController::class, 'destroy'])->name('messages.destroy');
     Route::put('/admin-about/{id}', [AdminAboutController::class, 'update'])->name('about.update');
     Route::put('/site-information/{id}', [SiteInformationController::class, 'update'])->name('siteInfo.update');
+    Route::put('/manage/edit/{id}', [ManageController::class, 'update'])->name('manage.update');
+    Route::delete('/manage/edit/{id}', [ManageController::class, 'destroy'])->name('manage.destroy');
 });

@@ -32,5 +32,12 @@
     "Delete" : "Sil",
     "Edit" : "Düzenle",
     "Site Name" : "Site Adı",
-    "Footer" : "Alt Bilgi"
+    "Footer" : "Alt Bilgi",
+    "Admin Name" : "Admin Adı",
+    "Admin E-Mail" : "Admin E-Mail",
+    "Admin Role" : "Admin Rolü",
+    "Edit Admin" : "Admin Düzenle",
+    "Add" : "Ekle",
+    "Add New Admin" : "Yeni Admin Ekle"
+
 }
