@@ -24,8 +24,8 @@ class CreateSiteInformationTable extends Migration
 
         DB::table('site_information')->insert([
             'name' => 'My Blog',
-            'about' => "Lorem Ipsum is simply dummy text and is simply  a placeholder for my poor friend and self suffices to see that.",
-            'footer' => "Lorem Ipsum is simply dummy text and is simply to see that.",
+            'about' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti minus voluptatibus quos ullam unde sequi magni, magnam praesentium, sunt odio ea? Rerum, quia corporis? Ipsa atque animi corrupti quibusdam ullam?",
+            'footer' => "Lorem ipsum dolor sit amet consectetur adipisicing elit",
         ]);
     }
 
