@@ -20,10 +20,10 @@ class User extends Authenticatable
     protected $table = 'users';
     
     protected $fillable = [
+        'role_id',
         'name',
         'username',
         'email',
-        'role',
         'password',
     ];
 
@@ -45,4 +45,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role()
+    {
+        return $this->hasOne(Role::class, 'id', 'role_id');
+    }
 }

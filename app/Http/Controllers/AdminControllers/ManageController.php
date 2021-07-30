@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
+
 class ManageController extends Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -50,19 +51,18 @@ class ManageController extends Controller
             'name' => 'required|string|max:255|min:3',
             'username' => 'required|string|max:50|min:3|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
-            'role' => 'required|string|max:25',
             'password' => 'required|string|min:8|confirmed'
         ]);
 
         User::create([
+            'role_id' => $request->input('role'),
             'name' => $request->input('name'),
             'username' => $request->input('username'),
             'email' => $request->input('email'),
-            'role' => $request->input('role'),
             'password' => Hash::make($request->input('password')),
 
         ]);
-
+    
         $admins = User::orderBy('id', 'asc')->get();
         return view('adminLayouts.manageLayouts.index', compact('admins'));
     }
@@ -91,10 +91,10 @@ class ManageController extends Controller
     public function update(Request $request, $id)
     {
         User::where('id', $id)->update([
+            'role_id' => $request->input('role'),
             'name' => $request->input('name'),
             'username' => $request->input('username'),
             'email' => $request->input('email'),
-            'role' => $request->input('role')
         ]);
 
         $admins = User::orderBy('id', 'asc')->get();

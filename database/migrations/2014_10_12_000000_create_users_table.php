@@ -17,22 +17,22 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('role_id');
             $table->string('name');
             $table->string('username');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('role');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
 
         DB::table('users')->insert([
+            'role_id' => 1,
             'name' => 'root',
             'username' => 'root',
             'email' => 'root@root.com',
-            'role' => 'root',
-            'password' => Hash::make('123456789'),
+            'password' => Hash::make('741852963'),
         ]);
     }
 

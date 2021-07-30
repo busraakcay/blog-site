@@ -25,7 +25,11 @@
                         </div>
                         <div class="form-group">
                             <label for="role">{{ __('Admin Role') }}</label>
-                            <input type="text" class="form-control" name="role" id="role" value="{{ $admin->role }}"></input>
+                            <select class="form-select form-control" name="role">
+                                    <option selected value="$admin->role->id">{{ucfirst($admin->role->role)}}</option>
+                                    <option value="2">Admin</option>
+                                    <option value="1">Root</option>
+                                </select>
                         </div>
                         <button type='submit' class="btn btn-dark pull-right my-3 ml-auto mr-3">
                             {{ __('Edit') }}

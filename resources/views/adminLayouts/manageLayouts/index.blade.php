@@ -16,7 +16,7 @@
                         <div class="mt-3 col-md-6">
                             <p><b>{{ __('Admin Name') }} : </b>{{ $admin->name }}</p>
                             <p><b>{{ __('Admin E-Mail') }} : </b>{{ $admin->email }}</p>
-                            <p><b>{{ __('Admin Role') }} : </b>{{ $admin->role }}</p>
+                            <p><b>{{ __('Admin Role') }} : </b> {{ ucfirst($admin->role->role) }}</p>
                         </div>
                         <div class="col-md-6">
                             <div class="row">
@@ -29,16 +29,15 @@
                                 <form action=" {{ route('manage.destroy', $admin->id) }} " method="post">
                                     @csrf
                                     @method('delete')
-                                    <button type='submit' class="btn btn-dark pull-right my-3 @if ($admin->role == 'root') disabled @else '' @endif">
+                                    <button type='submit' class="btn btn-dark pull-right my-3 @if ($admin->role->role == 'root') disabled @else '' @endif">
                                         {{ __('Delete') }}
-                                    </button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
-                <a href="{{ route('manage.create' , $admin->id) }} " class = "btn btn-dark m-1">{{ __('Add New Admin') }}</a>
+                <a href="{{ route('manage.create' , $admin->id) }} " class="btn btn-dark m-1">{{ __('Add New Admin') }}</a>
             </div>
         </div>
     </div>

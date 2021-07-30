@@ -62,18 +62,18 @@ Route::group([
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/profile', [HomeController::class, 'index'])->name('home');
-    Route::get('/site-information', [SiteInformationController::class, 'index'])->name('admin.site_information');
+    Route::get('/site-information', [SiteInformationController::class, 'index'])->name('admin.site_information')->middleware('role');
     Route::get('/admin-category', [AdminCategoryController::class, 'index'])->name('admin.category');
     Route::get('/article', [ArticleController::class, 'index'])->name('admin.article');
     Route::get('/admin-about', [AdminAboutController::class, 'index'])->name('admin.about');
     Route::get('/messages', [MessageController::class, 'index'])->name('admin.messages');
-    Route::get('/manage', [ManageController::class, 'index'])->name('admin.manage');
+    Route::get('/manage', [ManageController::class, 'index'])->name('admin.manage')->middleware('role');
     Route::get('/manage/edit/{id}', [ManageController::class, 'edit'])->name('manage.edit');
     Route::get('/manage/create', [ManageController::class, 'create'])->name('manage.create');
     Route::post('/manage', [ManageController::class, 'store'])->name('manage.store');
 });
 
-Route::get('/admin', function () {
+Route::get('/{manage}', function () {
     return redirect(app()->getLocale() . '/admin');
 });
 
@@ -82,7 +82,7 @@ Route::group([
 ], function () {
     Route::delete('/messages/{id}', [MessageController::class, 'destroy'])->name('messages.destroy');
     Route::put('/admin-about/{id}', [AdminAboutController::class, 'update'])->name('about.update');
-    Route::put('/site-information/{id}', [SiteInformationController::class, 'update'])->name('siteInfo.update');
-    Route::put('/manage/edit/{id}', [ManageController::class, 'update'])->name('manage.update');
-    Route::delete('/manage/edit/{id}', [ManageController::class, 'destroy'])->name('manage.destroy');
+    Route::put('/site-information/{id}', [SiteInformationController::class, 'update'])->name('siteInfo.update')->middleware('role');
+    Route::put('/manage/edit/{id}', [ManageController::class, 'update'])->name('manage.update')->middleware('role');
+    Route::delete('/manage/edit/{id}', [ManageController::class, 'destroy'])->name('manage.destroy')->middleware('role');
 });

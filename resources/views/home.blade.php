@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <b>{{ __('Your Role :  ') }}</b>{{ $user->role }}
+                    <b>{{ __('Your Role :  ') }}</b>{{ $user->role->role }}
                 </div>
             </div>
         </div>

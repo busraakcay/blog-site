@@ -54,10 +54,11 @@
 
                         <div class="form-group row">
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Admin Role') }}</label>
-
                             <div class="col-md-6">
-                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
-
+                                <select class="form-select form-control @error('role') is-invalid @enderror" name="role" required autocomplete="role" autofocus id="role" aria-label="Default select example">
+                                    <option selected value="2">Admin</option>
+                                    <option value="1">Root</option>
+                                </select>
                                 @error('role')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
