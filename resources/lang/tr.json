@@ -42,6 +42,16 @@
     "Add" : "Ekle",
     "Add New Admin" : "Yeni Admin Ekle",
     "Profile" : "Profil",
-    "Your Role :  " : "Rolün : "
-
+    "Your Role :  " : "Rolün : ",
+    "Add New Category" : "Yeni Kategori Ekle",
+    "Category Name" : "Kategori Adı",
+    "Add New Article" : "Yeni Makale Ekle",
+    "Article Title" : "Makale Başlığı",
+    "Article Body" : "Makale İçeriği",
+    "Edit Article" : "Makaleyi Düzenle",
+    "Choose Category" : "Kategori Seç",
+    "Little Article Image" : "Küçük Makale Resmi",
+    "Big Article Image" : "Büyük Makale Resmi",
+    "There is no article here." : "Burada hiç makale yok.",
+    "Category : " : "Kategori : "
 }

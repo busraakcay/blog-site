@@ -2,17 +2,30 @@
 @section('content')
 
 <div class="container">
-    <a href="#" class="text-decoration-none text-dark">
-    <div class="mt-5">
-        <div class="container">
-            <div class="media">
-                <img class="mr-3" src=" {{  asset('images/img.jpg') }} " alt="Generic placeholder image">
-                <div class="media-body border-bottom">
-                    <h5 class="mt-0"><b>Media heading</b></h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+    @forelse ($articles as $article)
+    <a href="{{ route('article.show', $article->id) }}" class="text-decoration-none text-dark">
+        <div class="mt-5 border-bottom">
+            <div class="container">
+                <div class="media mb-5">
+                    <img style="margin-right: 10px;" src=" {{ asset($article->littleImage) }} " alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-3"><b>{{ $article->{'title_'. app()->getLocale()} }}</b></h5>
+                        <p class="mb-5">{{ Str::limit($article->{'body_'. app()->getLocale()}, 200, '...') }}</p>
+                    </div>
+                    <p><i>{{ __('Category : ') }}</i><strong>{{ $article->category->{'name_'. app()->getLocale()} }}</strong></p>
                 </div>
             </div>
         </div>
-    </div></a>
+        @empty
+        <div class="mt-3">
+            <div class="container">
+                <p class="text-center">{{__('There is no article here.')}}</p>
+            </div>
+        </div>
+        @endforelse
+    </a>
+</div>
+<div class='container'>
+    <span class='d-flex justify-content-center'>{{$articles->links('pagination::bootstrap-4')}}</span>
 </div>
 @endsection

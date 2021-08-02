@@ -41,6 +41,7 @@ Route::group([
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::post('/contact', [ContactController::class, 'store']);
+    Route::get('/article/{id}', [UserHomeController::class, 'show'])->name('article.show');
 });
 
 Route::get('/', function () {
@@ -64,7 +65,12 @@ Route::group([
     Route::get('/profile', [HomeController::class, 'index'])->name('home');
     Route::get('/site-information', [SiteInformationController::class, 'index'])->name('admin.site_information')->middleware('role');
     Route::get('/admin-category', [AdminCategoryController::class, 'index'])->name('admin.category');
-    Route::get('/article', [ArticleController::class, 'index'])->name('admin.article');
+    Route::get('/admin-category/create', [AdminCategoryController::class, 'create'])->name('category.create');
+    Route::post('/category', [AdminCategoryController::class, 'store'])->name('category.store');
+    Route::get('/articles', [ArticleController::class, 'index'])->name('admin.article');
+    Route::get('/article/edit/{id}', [ArticleController::class, 'edit'])->name('article.edit');
+    Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
+    Route::post('/article', [ArticleController::class, 'store'])->name('article.store');
     Route::get('/admin-about', [AdminAboutController::class, 'index'])->name('admin.about');
     Route::get('/messages', [MessageController::class, 'index'])->name('admin.messages');
     Route::get('/manage', [ManageController::class, 'index'])->name('admin.manage')->middleware('role');
@@ -80,9 +86,13 @@ Route::get('/{manage}', function () {
 Route::group([
     'prefix' => '/admin'
 ], function () {
+    Route::delete('/article/destroy/{id}', [ArticleController::class, 'destroy'])->name('article.destroy');
+    Route::put('/article/edit/{id}', [ArticleController::class, 'update'])->name('article.update');
     Route::delete('/messages/{id}', [MessageController::class, 'destroy'])->name('messages.destroy');
     Route::put('/admin-about/{id}', [AdminAboutController::class, 'update'])->name('about.update');
     Route::put('/site-information/{id}', [SiteInformationController::class, 'update'])->name('siteInfo.update')->middleware('role');
     Route::put('/manage/edit/{id}', [ManageController::class, 'update'])->name('manage.update')->middleware('role');
-    Route::delete('/manage/edit/{id}', [ManageController::class, 'destroy'])->name('manage.destroy')->middleware('role');
+    Route::put('/article/edit/{id}', [ArticleController::class, 'update'])->name('article.update');
+    Route::delete('/manage/destroy/{id}', [ManageController::class, 'destroy'])->name('manage.destroy')->middleware('role');
+    Route::delete('/category/{id}', [AdminCategoryController::class, 'destroy'])->name('category.destroy');
 });

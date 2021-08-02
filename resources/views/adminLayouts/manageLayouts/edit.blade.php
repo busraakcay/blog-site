@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <label for="role">{{ __('Admin Role') }}</label>
                             <select class="form-select form-control" name="role">
-                                    <option selected value="$admin->role->id">{{ucfirst($admin->role->role)}}</option>
+                                    <option selected value="{{$admin->role->id}}">{{ucfirst($admin->role->role)}}</option>
                                     <option value="2">Admin</option>
                                     <option value="1">Root</option>
                                 </select>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminControllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
@@ -20,7 +21,8 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        return view('adminLayouts.categoryLayouts.index');
+        $categories = Category::get();
+        return view('adminLayouts.categoryLayouts.index', compact('categories'));
     }
 
     /**
@@ -30,7 +32,7 @@ class AdminCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminLayouts.categoryLayouts.create');
     }
 
     /**
@@ -41,41 +43,17 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name_en' => 'required|string',
+            'name_tr' => 'required|string',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        Category::create([
+            'name_en' => $request->input('name_en'),
+            'name_tr' => $request->input('name_tr'),
+        ]);
+        $categories = Category::get();
+        return view('adminLayouts.categoryLayouts.index', compact('categories'));
     }
 
     /**
@@ -86,6 +64,14 @@ class AdminCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $admin = Category::find($id);
+        $adminCountBeforeDelete = Category::count();
+        $admin->delete();
+        $adminCountAfterDelete = Category::count();
+        if ($adminCountAfterDelete < $adminCountBeforeDelete) {
+            return redirect()->back();
+        } else {
+            abort(404);
+        }
     }
 }

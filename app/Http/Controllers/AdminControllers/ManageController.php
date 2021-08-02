@@ -62,9 +62,10 @@ class ManageController extends Controller
             'password' => Hash::make($request->input('password')),
 
         ]);
-    
+
         $admins = User::orderBy('id', 'asc')->get();
         return view('adminLayouts.manageLayouts.index', compact('admins'));
+        die();
     }
 
     /**
@@ -102,6 +103,7 @@ class ManageController extends Controller
             'locale' => app()->getLocale(),
             'admins' => $admins,
         ]);
+        die();
     }
 
     /**

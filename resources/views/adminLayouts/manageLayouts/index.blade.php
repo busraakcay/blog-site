@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header mt-0 bg-dark text-white"><b>{{ __('Admins') }}</b></div>
                 @foreach ($admins as $admin)
-                <div class="card-body border-bottom">
+                <div class="card-body border-bottom @if (!$loop->last) border-dark @else '' @endif">
                     <div class="border-bottom">
                         <h5><b>{{ $admin->username }}</b></h5>
                     </div>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 @endforeach
-                <a href="{{ route('manage.create' , $admin->id) }} " class="btn btn-dark m-1">{{ __('Add New Admin') }}</a>
+                <a href="{{ route('manage.create') }} " class="btn btn-dark m-1">{{ __('Add New Admin') }}</a>
             </div>
         </div>
     </div>

@@ -42,5 +42,17 @@
     "Add" : "Add",
     "Add New Admin" : "Add New Admin",
     "Profile" : "Profile",
-    "Your Role :  " : "Your Role : "
+    "Your Role :  " : "Your Role : ",
+    "Add New Category" : "Add New Category",
+    "Category Name" : "Category Name",
+    "Add New Article" : "Add New Article",
+    "Article Title" : "Article Title",
+    "Article Body" : "Article Body",
+    "Edit Article" : "Edit Article",
+    "Choose Category" : "Choose Category",
+    "Little Article Image" : "Little Article Image",
+    "Big Article Image" : "Big Article Image",
+    "There is no article here." : "There is no article here.",
+    "Category : " : "Category : "
+
 }

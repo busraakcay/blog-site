@@ -20,6 +20,6 @@ class CheckRoleIfRoot
         if (Auth::user()->role_id == 1) {
             return $next($request);
         }
-        abort(404);
+        abort(403, 'You are not allowed to access this page. You are not a root.');
     }
 }
