@@ -56,6 +56,22 @@ class AdminCategoryController extends Controller
         return view('adminLayouts.categoryLayouts.index', compact('categories'));
     }
 
+    public function update(Request $request, $id){
+        if ($request->status == 'on') {
+            Category::where('id', $id)->update([
+                'status' => 1
+            ]);
+        }
+
+        if ($request->status == null) {
+            Category::where('id', $id)->update([
+                'status' => 0
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
     /**
      * Remove the specified resource from storage.
      *

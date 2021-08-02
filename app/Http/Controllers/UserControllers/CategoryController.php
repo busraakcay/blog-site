@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(){
-        $categories = Category::get();
+        $categories = Category::active()->get();
         return view('userLayouts.category', compact('categories'));
     }
 }

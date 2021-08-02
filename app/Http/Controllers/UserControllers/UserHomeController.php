@@ -18,4 +18,12 @@ class UserHomeController extends Controller
         $article = Article::find($id);
         return view('userLayouts.articleShow', compact('article'));
     }
+
+    // public function show($locale, $id){
+    //     dd($id);
+    //     die();
+    //     $id = request()->segment(3);
+    //     $article = Article::find($id);
+    //     return view('userLayouts.articleShow', compact('article'));
+    // }
 }

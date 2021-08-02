@@ -95,4 +95,5 @@ Route::group([
     Route::put('/article/edit/{id}', [ArticleController::class, 'update'])->name('article.update');
     Route::delete('/manage/destroy/{id}', [ManageController::class, 'destroy'])->name('manage.destroy')->middleware('role');
     Route::delete('/category/{id}', [AdminCategoryController::class, 'destroy'])->name('category.destroy');
+    Route::put('/category/{id}', [AdminCategoryController::class, 'update'])->name('category.update');
 });

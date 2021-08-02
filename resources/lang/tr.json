@@ -53,5 +53,9 @@
     "Little Article Image" : "Küçük Makale Resmi",
     "Big Article Image" : "Büyük Makale Resmi",
     "There is no article here." : "Burada hiç makale yok.",
-    "Category : " : "Kategori : "
+    "Category : " : "Kategori : ",
+    "Active" : "Aktif",
+    "Confirm" : "Onayla"
+
+
 }

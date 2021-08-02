@@ -18,9 +18,28 @@
                     <form action="{{ route('category.destroy', $category->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <button type='submit' class="btn btn-dark pull-right my-3">
+                        <button type='submit' class="btn btn-dark pull-right mt-5">
                             {{ __('Delete') }}
+                        </button>
                     </form>
+
+                    <form action="{{ route('category.update' , $category->id) }}" method="post">
+                        @csrf
+                        @method('put')
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="status" name="status" 
+                            @if ($category->status == 1) checked
+                            @else unchecked
+                            @endif>
+                            <label class="form-check-label" for="status">{{__('Active')}}</label>
+                        </div>
+                        <div class = 'd-flex d-inline-block'>
+                            <button type='submit' class="btn btn-dark">
+                                {{ __('Confirm') }}
+                            </button>
+                        </div>
+                    </form>
+
                 </li>
                 @empty
                 <p>There is no category here.</p>

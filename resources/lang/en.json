@@ -53,6 +53,8 @@
     "Little Article Image" : "Little Article Image",
     "Big Article Image" : "Big Article Image",
     "There is no article here." : "There is no article here.",
-    "Category : " : "Category : "
+    "Category : " : "Category : ",
+    "Active" : "Active",
+    "Confirm" : "Confirm"
 
 }
