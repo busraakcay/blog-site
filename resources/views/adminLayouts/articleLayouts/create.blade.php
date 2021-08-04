@@ -16,7 +16,7 @@
                             <div class="col-md-6">
                                 <select class="form-select form-control" name="category" required autocomplete="category" autofocus id="category" aria-label="Default select example">
                                     @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->{'name_'. app()->getLocale()} }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

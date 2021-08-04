@@ -43,17 +43,25 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name_en' => 'required|string',
-            'name_tr' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'name_en' => 'required|string',
+        //     'name_tr' => 'required|string',
+        // ]);
 
-        Category::create([
-            'name_en' => $request->input('name_en'),
-            'name_tr' => $request->input('name_tr'),
-        ]);
+        // Category::create([
+        //     'name_en' => $request->input('name_en'),
+        //     'name_tr' => $request->input('name_tr'),
+        // ]);
+
+        Category::create($request->all());
+
         $categories = Category::get();
-        return view('adminLayouts.categoryLayouts.index', compact('categories'));
+
+        return redirect()->route('admin.category',  [
+            'locale' => app()->getLocale(),
+            'admins' => $categories,
+        ]);
+            die();
     }
 
     public function update(Request $request, $id){

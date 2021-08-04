@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(){
-        $categories = Category::active()->get();
+        $categories = Category::active()->withTranslation()
+        ->translatedIn(app()->getLocale())->get();
         return view('userLayouts.category', compact('categories'));
     }
 }

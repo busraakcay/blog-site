@@ -10,21 +10,16 @@
                 <div class="card-body border-bottom">
                     <form action="{{ route('category.store') }}" method="post">
                         @csrf
+                        <input type="text" class="form-control" name="ad" required autofocus>
 
+                        @foreach(config('app.locales') as $locale)
                         <div class="form-group row">
-                            <label for="name_en" class="col-md-4 col-form-label text-md-right">{{ __('Category Name') }} (EN)</label>
+                            <label for="name:{{ $locale }}" class="col-md-4 col-form-label text-md-right">{{ __('Category Name') }} ({{strtoupper($locale)}})</label>
                             <div class="col-md-6">
-                                <input id="name_en" type="text" class="form-control" name="name_en" value="{{ old('name_en') }}" required autocomplete="name_en" autofocus>
+                                <input id="name:{{ $locale }}" type="text" class="form-control" name="name:{{ $locale }}" value="{{ old($locale . 'name') }}" required autocomplete="name:{{ $locale }}" autofocus>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="name_tr" class="col-md-4 col-form-label text-md-right">{{ __('Category Name') }} (TR)</label>
-                            <div class="col-md-6">
-                                <input id="name_tr" type="text" class="form-control" name="name_tr" value="{{ old('name_tr') }}" required autocomplete="name_tr" autofocus>
-                            </div>
-                        </div>
-
+                        @endforeach
                         <button type='submit' class="btn btn-dark pull-right my-3 ml-auto mr-3">
                             {{ __('Add') }}
                         </button>
@@ -34,5 +29,4 @@
         </div>
     </div>
 </div>
-
 @endsection

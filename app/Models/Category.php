@@ -5,13 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
+
+//class Category extends Model
+
+class Category extends Model implements TranslatableContract
 {
-    use HasFactory;
+    //use HasFactory;
+
+    use HasFactory, Translatable;
 
     protected $table = 'categories';
 
     protected $guarded = [];
+
+    public $translatedAttributes = ['name'];
 
     public function articles()
     {
@@ -22,4 +31,14 @@ class Category extends Model
     {
         return $query->where('status', 1);
     }
+
+//     protected static function boot()
+// {
+//     parent::boot();
+
+//     // auto-sets values on creation
+//     static::creating(function ($query) {
+//         $query->status = $query->status ?? true;
+//     });
+// }
 }
