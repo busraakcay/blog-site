@@ -41,4 +41,12 @@ class Category extends Model implements TranslatableContract
 //         $query->status = $query->status ?? true;
 //     });
 // }
+
+// public static function bootTranslatable(): void 
+//  { 
+//      static::saved(function (Category $category) { 
+//          /* @var Translatable $model */ 
+//          return $category->saveTranslations(); 
+//      }); 
+//  }
 }

@@ -13,7 +13,7 @@ class AdminCategoryController extends Controller
         parent::__construct();
         $this->middleware("auth");
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -43,6 +43,16 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $category = new Category();
+        $category->ad = $request->input('ad');
+        $category->save();
+
+        foreach(config('app.locales') as $locale){
+            $category->translateOrNew($locale)->name = $request->input('name:' . $locale);
+        }
+
+        $category->save();
+
         // $request->validate([
         //     'name_en' => 'required|string',
         //     'name_tr' => 'required|string',
@@ -53,18 +63,16 @@ class AdminCategoryController extends Controller
         //     'name_tr' => $request->input('name_tr'),
         // ]);
 
-        Category::create($request->all());
-
         $categories = Category::get();
-
         return redirect()->route('admin.category',  [
             'locale' => app()->getLocale(),
             'admins' => $categories,
         ]);
-            die();
+        die();
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         if ($request->status == 'on') {
             Category::where('id', $id)->update([
                 'status' => 1
