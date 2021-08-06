@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
-use Astrotomic\Translatable\Translatable;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract; // #### ekle
+use Astrotomic\Translatable\Translatable; // ##### ekle
 
 //class Category extends Model
 
 class Category extends Model implements TranslatableContract
 {
-    //use HasFactory;
+    //use HasFactory; 
 
-    use HasFactory, Translatable;
+    use HasFactory, Translatable; // ##### ekle
 
     protected $table = 'categories';
 
     protected $guarded = [];
 
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['name']; // ##### ekle
 
     public function articles()
     {
