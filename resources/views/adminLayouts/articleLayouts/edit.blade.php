@@ -15,9 +15,9 @@
                             <label for="category" class="col-md-4 col-form-label text-md-right">{{ __('Choose Category') }}</label>
                             <div class="col-md-6">
                                 <select class="form-select form-control" name="category" required autocomplete="category" autofocus id="category" aria-label="Default select example">
-                                    <option selected value="{{$article->category->id}}">{{ucfirst($article->category->{'name_'. app()->getLocale()}) }}</option>
+                                    <option selected value="{{$article->category->id}}">{{ucfirst($article->category->name) }}</option>
                                     @foreach ($categories as $category)
-                                    <option value="{{$category->id}}">{{ $category->{'name_'. app()->getLocale()} }}</option>
+                                    <option value="{{$category->id}}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

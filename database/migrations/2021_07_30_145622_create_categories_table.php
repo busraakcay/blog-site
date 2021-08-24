@@ -18,7 +18,6 @@ class CreateCategoriesTable extends Migration
             $table->id();
             //$table->string('name_en')->nullable();
             //$table->string('name_tr')->nullable();
-            $table->string('ad');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

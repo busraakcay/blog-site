@@ -12,7 +12,7 @@
                         <h5 class="mt-3"><b>{{ $article->{'title_'. app()->getLocale()} }}</b></h5>
                         <p class="mb-5">{{ Str::limit($article->{'body_'. app()->getLocale()}, 200, '...') }}</p>
                     </div>
-                    <p><i>{{ __('Category : ') }}</i><strong>{{ $article->category->{'name_'. app()->getLocale()} }}</strong></p>
+                    <p><i>{{ __('Category : ') }}<strong>{{ $article->category->name }}</strong></i></p>
                 </div>
             </div>
         </div>

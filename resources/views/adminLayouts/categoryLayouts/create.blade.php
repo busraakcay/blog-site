@@ -10,8 +10,6 @@
                 <div class="card-body border-bottom">
                     <form action="{{ route('category.store') }}" method="post">
                         @csrf
-                        <input type="text" class="form-control" name="ad" required autofocus>
-
                         @foreach(config('app.locales') as $locale)
                         <div class="form-group row">
                             <label for="name:{{ $locale }}" class="col-md-4 col-form-label text-md-right">{{ __('Category Name') }} ({{strtoupper($locale)}})</label>

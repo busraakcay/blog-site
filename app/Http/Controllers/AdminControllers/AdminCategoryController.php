@@ -44,8 +44,6 @@ class AdminCategoryController extends Controller
     public function store(Request $request)
     {
         $category = new Category();
-        $category->ad = $request->input('ad');
-        $category->save();
 
         foreach(config('app.locales') as $locale){
             $category->translateOrNew($locale)->name = $request->input('name:' . $locale);
